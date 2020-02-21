@@ -20,13 +20,22 @@ class grafo():
 
     @property
     def num_vertices(self):
+        """
+            :return número total de vertices no grafo |V|
+        """
         return len(self.V)
 
     @property
     def num_arestas(self):
+        """
+            :return número total de aresta no grafo |E|
+        """
         return sum(len(self.E[v]) for v in self.V)
 
     def acresc_vertice(self, v):
+        """ acrescenta um vertice v ao grafo
+            normalmente esta funcao nao é necessária pois acresc_aresta adiciona um vertice não existente
+        """
         if v not in self.V:
             self.V.append(v)
             self.cor[v] = WHITE
@@ -38,6 +47,9 @@ class grafo():
         self.E[u].append(v)
 
     def acresc_aresta(self, u, v, direcionada=False):
+        """
+            :param direcionada: por default cria um grafo nao direcionado
+        """
         self.acresc_vertice(u)
         self.acresc_vertice(v)
         self._add(u, v)
